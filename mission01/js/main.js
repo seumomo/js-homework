@@ -55,6 +55,8 @@ function validation(type) {
 
     if (value) {
       isInvalid = !validationFunction(value);
+    } else {
+      isInvalid = false;
     }
 
     input.classList.toggle('is--invalid', isInvalid);
