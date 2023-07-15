@@ -15,7 +15,7 @@
 - `git clone https://github.com/seumomo/js-homework.git`
 
 - eslint 8.44.0
-  - `npm i eslint`
+  * `npm i eslint`
 
 - prettier 3.0.0
   - `npm i prettier`
