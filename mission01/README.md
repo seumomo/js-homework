@@ -14,21 +14,18 @@
 
 - `git clone https://github.com/seumomo/js-homework.git`
 
-* eslint 8.44.0
-
+- eslint 8.44.0
   - `npm i eslint`
 
-* prettier 3.0.0
-
+- prettier 3.0.0
   - `npm i prettier`
 
-* live-server 1.2.2
+- live-server 1.2.2
   - `npm i live-server`
 
 ## 목차 및 기간
 
 - 목차
-
   1. <a href="#a1">로그인 페이지</a>
 
 - 기간 : 2023 / 07 / 13 ~ 2023 / 07 / 14
@@ -77,21 +74,18 @@
   - DOM의 input 요소를 찾는 함수 `getInput()`
     - 찾을 input 요소의 type을 함수의 인수로 넣으면, 해당 input을 반환한다.
     - 유효하지 않은 input 요소를 함수의 인수로 넣었을 때에는 Error 메세지가 출력된다.
-<br>
 
   - input 요소에 입력되는 값을 validation하는 함수 `validation()`
     - `getInput()`를 사용하여 input을 찾고, input event를 사용하여 input에 값이 입력될 때마다 validation한다.
     - validation 기준을 충족하거나, 입력된 값을 지운 경우에는 error 메세지가 출력되지 않는다.
-<br>
 
 - 로그인 버튼을 눌렀을 때 유효한 값인지 비교하고, 유효하지 않으면 알림창을 띄워준다.
   - form에 submit event를 사용하여 입력된 값이 유효하다면 welcome.html로 이동하고, 그렇지 않으면 알림창이 출력되도록 한다.
 
-#### 고민했던 지점
+### 고민했던 지점
 
 - 로그인을 눌렀을 때, 유효한 값을 입력했는데도 welcome.html로 이동하지 않고 빈 페이지로 이동되었다.
   - form의 submit event의 기본 동작을 실행되지 않도록 하여 해결했다.
-<br>
 
 - 로그인 후 페이지가 이동되었다가, 뒤로가기를 했을 때 입력됐던 값과 체크됐던 것들이 초기화되지 않았다.
   - 처음엔 pageshow event를 통해 반복문을 사용하여 모든 input 요소에 null | false를 할당시켜 해결했다.
