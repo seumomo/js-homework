@@ -22,6 +22,7 @@ module.exports = {
   },
   rules: {
     'no-unused-vars': 'warn',
-    'no-extra-boolean-cast': 'warn',
+    'no-extra-boolean-cast': 'off',
+    'no-useless-escape': 'off',
   },
 };

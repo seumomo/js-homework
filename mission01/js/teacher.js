@@ -6,12 +6,12 @@ const user = {
 /*
 
 1. email 정규표현식을 사용한 조건처리 
-   - false면 해당 input에 is--invalid 추가
-   - true면 해당 input에 is--invalid 제거
+  - false면 해당 input에 is--invalid 추가
+  - true면 해당 input에 is--invalid 제거
 
 2. pw 정규표현식을 사용한 validation
-   - false면 해당 input에 is--invalid 추가
-   - true면 해당 input에 is--invalid 제거
+  - false면 해당 input에 is--invalid 추가
+  - true면 해당 input에 is--invalid 제거
 
 3. 로그인 버튼을 클릭시 user.id의 값과 input의 값을 비교
 4. 로그인 버튼을 클릭시 user.pw의 값과 input의 값을 비교
