@@ -24,5 +24,6 @@ module.exports = {
     'no-unused-vars': 'warn',
     'no-extra-boolean-cast': 'off',
     'no-useless-escape': 'off',
+    'no-undef': 'off',
   },
 };
