@@ -3,38 +3,38 @@ import { data } from './data.js';
 
 const characterList = getNode('.nav__list');
 
-const setBgColor = (dataObject) => {
+const setBgColor = (dataArray) => {
   const body = getNode('body');
-  const color = dataObject.color;
+  const color = dataArray.color;
   const [colorA, colorB = '#000'] = color;
 
   body.style.background = `linear-gradient(to bottom, ${colorA}, ${colorB})`;
 };
 
-const setImage = (dataObject) => {
+const setImage = (dataArray) => {
   const visualImage = getNode('.visual img');
 
-  setAttr(visualImage, 'src', `./assets/${dataObject.name.toLowerCase()}.jpeg`);
-  setAttr(visualImage, 'alt', `./assets/${dataObject.alt}`);
+  setAttr(visualImage, 'src', `./assets/${dataArray.name.toLowerCase()}.jpeg`);
+  setAttr(visualImage, 'alt', `./assets/${dataArray.alt}`);
 };
 
-const setNameText = (dataObject) => {
+const setNameText = (dataArray) => {
   const nickName = getNode('.nickName');
-  nickName.textContent = `${dataObject.name}`;
+  nickName.textContent = `${dataArray.name}`;
 };
 
 const slider = (event) => {
   const target = event.target.closest('li');
   if (!target) return;
   const index = target.getAttribute('data-index') - 1;
-  const dataObject = data[index];
+  const dataArray = data[index];
 
   [...characterList.children].forEach((item) => removeClass(item, 'is-active'));
   addClass(target, 'is-active');
 
-  setBgColor(dataObject);
-  setImage(dataObject);
-  setNameText(dataObject);
+  setBgColor(dataArray);
+  setImage(dataArray);
+  setNameText(dataArray);
 };
 
 characterList.addEventListener('click', slider);

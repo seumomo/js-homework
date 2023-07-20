@@ -1,9 +1,3 @@
-<div align="center">
-
-[![Hits](https://hits.seeyoufarm.com/api/count/incr/badge.svg?url=https%3A%2F%2Fgithub.com%2Fseumomo%2FProject-F4&count_bg=%233DACC8&title_bg=%23555555&icon=&icon_color=%23E7E7E7&title=hits&edge_flat=true)](https://hits.seeyoufarm.com)
-
-</div>
-
 # <div align="center">Elemental Movie Poster 구현</div>
 
 #### <div align="center">멋쟁이 사자처럼 프론트엔드 스쿨 6기<br>JavaScript Mission-02</div>
@@ -50,9 +44,7 @@
 
 ### 접근 방법
 
-**_`email` 입력_** ➡️ **_`password` 입력_** ➡️ **_로그인 버튼 클릭_** ➡️ **_`welcome.html`로 이동_**
-
-> **user** 객체와 일치하지 않는 **email** | **password**을 입력하였을 경우, **로그인 불가**
+**_하단의 네 개의 이미지 중 아무거나 클릭_** ➡️ **_`visual` 영역의 이미지 변경_** | **_배경 색상 변경_** | **_상단의 `name` 변경_**
 
 ---
 
@@ -75,34 +67,85 @@
 
 # 결과물
 
-## <a id="a1">로그인 페이지</a>
+## <a id="a1">Elemental Movie Poster</a>
 
-![naver_login](https://github.com/seumomo/js-homework/assets/127176650/2d472fb9-6dbe-4966-8d2b-5a829d64ea17)
+![characters](https://github.com/seumomo/js-homework/assets/127176650/7dae4a2e-9516-4afb-9486-faf1d9b7b781)
 
 ---
 
 ### 작업 내용 및 기본 동작
 
-- 함수를 만들고 사용했다.
+- 수업시간에 배웠던 내용들을 활용했다.
 
-  - DOM의 input 요소를 찾는 함수 `getInput()`
+  - `모듈 프로그래밍`으로 연습해보기
+    - 수업시간에 만들었던 `addClass` | `removeClass` | `getNode` | `setAttr` 함수를 재사용했다.
+      > 1. `addClass` | `removeClass` ➡️ `node`에 `class`를 추가 | 제거 해주는 함수
+      > 2. `getNode` ➡️ `DOM`에서 해당하는 `node`를 찾아주는 함수
+      > 3. `setAttr` ➡️ `node`의 `attribute`에 `value`를 `set`해주는 함수
 
-    - 찾을 input 요소의 type을 함수의 인수로 넣으면, 해당 input을 반환한다.
-    - 유효하지 않은 input 요소를 함수의 인수로 넣었을 때에는 Error 메세지가 출력된다.
+- 분리된 함수들을 만들어서 하나의 `Event`에 사용했다.
 
-  - input 요소에 입력되는 값을 validation하는 함수 `validation()`
-    - `getInput()`를 사용하여 input을 찾고, input event를 사용하여 input에 값이 입력될 때마다 validation한다.
-    - validation 기준을 충족하거나, 입력된 값을 지운 경우에는 error 메세지가 출력되지 않는다.
+  - 하단 네 개의 이미지 중 `click`한 `character`에 테두리가 생기고 다른 `character`의 테두리는 제거되도록 하는 `Event`를 구현했고, 해당 `Event` 안에 3가지 함수를 사용했다.
 
-- 로그인 버튼을 눌렀을 때 유효한 값인지 비교하고, 유효하지 않으면 알림창을 띄워준다.
-  - form에 submit event를 사용하여 입력된 값이 유효하다면 welcome.html로 이동하고, 그렇지 않으면 알림창이 출력되도록 한다.
+  ```js
+  const slider = (event) => {
+    const target = event.target.closest('li');
+    if (!target) return;
+    const index = target.getAttribute('data-index') - 1;
+    const dataArray = data[index];
 
+    [...characterList.children].forEach((item) => removeClass(item, 'is-active'));
+    addClass(target, 'is-active');
+
+    setBgColor(dataArray);
+    setImage(dataArray);
+    setNameText(dataArray);
+  };
+  ```
+
+  > 1. 모든 이미지에 `is-active`라는 `class`가 제거되도록 `forEach`를 사용했다.
+  > 2. click`된 `target`의 이미지에 `is-active`라는 `class`가 추가되도록 했다.
+  > 3. `chracters`의 정보가 담겨있는 기본 제공된 `data` 배열의 `index`를 `dataArray`라는 변수에 할당했다.
+  - `character`에 맞는 배경색으로 변경되도록 하는 `setBgColor` 함수를 만들었다.
+
+  ```js
+  const setBgColor = (dataArray) => {
+    const body = getNode('body');
+    const color = dataArray.color;
+    const [colorA, colorB = '#000'] = color;
+
+    body.style.background = `linear-gradient(to bottom, ${colorA}, ${colorB})`;
+  };
+  ```
+
+  > `data` 배열의 `color`들을 `colorA` | `colorB`라는 변수에 구조 분해 할당하였다.
+  > ➡️ `colorB`의 기본값은 `#000`으로 설정했다.
+
+  - `visual`의 이미지가 선택한 `character`의 이미지와 대체 텍스트가 변경되도록 하는 `setImage` 함수를 만들었다.
+  ```js
+  const setImage = (dataArray) => {
+    const visualImage = getNode('.visual img');
+
+    setAttr(visualImage, 'src', `./assets/${dataArray.name.toLowerCase()}.jpeg`);
+    setAttr(visualImage, 'alt', `./assets/${dataArray.alt}`);
+  };
+  ```
+  > `dataArray`를 활용하여 이미지 및 대체 텍스트가 변경되도록 했다.
+  > ➡️ `dataArray`의 `name`은 대문자이기 때문에 `toLowerCase()` 메소드를 사용했다.
+  - 상단의 `name`이 선택한 `character`의 `name`이 되도록 하는 `setNameText` 함수를 만들었다.
+  ```js
+  const setNameText = (dataArray) => {
+    const nickName = getNode('.nickName');
+    nickName.textContent = `${dataArray.name}`;
+  };
+  ```
+  > `dataArray`를 활용하여 상단 이미지의 `name`이 변경되도록 했다.
 ### 고민했던 지점
 
-- 로그인을 눌렀을 때, 유효한 값을 입력했는데도 welcome.html로 이동하지 않고 빈 페이지로 이동되었다.
+- 화살표 함수를 연습해보기 위해 모든 함수를 화살표 함수로 정의하였다.
 
-  - form의 submit event의 기본 동작을 실행되지 않도록 하여 해결했다.
+- `setBgColor` 함수에서 `colorB`의 기본값을 설정하는 데에 어려움이 있었다.
+  - `구조 분해 할당`에서 배운 기본값 설정으로 해결했다.
 
-- 로그인 후 페이지가 이동되었다가, 뒤로가기를 했을 때 입력됐던 값과 체크됐던 것들이 초기화되지 않았다.
-  - 처음엔 pageshow event를 통해 반복문을 사용하여 모든 input 요소에 null | false를 할당시켜 해결했다.
-  - 리팩토링하는 과정에서 form 자체에 reset()을 사용하여 초기화되도록 했다.
+- 함수를 분리는 했는데, 사용하면 `index` 변수에 접근할 수 없다는 `Error`가 출력되었다.
+  - 분리된 함수의 매개변수에 `dataArray`를 넣으면 해결되는 `Error`였다.

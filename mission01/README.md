@@ -1,9 +1,3 @@
-<div align="center">
-
-[![Hits](https://hits.seeyoufarm.com/api/count/incr/badge.svg?url=https%3A%2F%2Fgithub.com%2Fseumomo%2FProject-F4&count_bg=%233DACC8&title_bg=%23555555&icon=&icon_color=%23E7E7E7&title=hits&edge_flat=true)](https://hits.seeyoufarm.com)
-
-</div>
-
 # <div align="center">네이버 로그인 페이지 구현</div>
 
 #### <div align="center">멋쟁이 사자처럼 프론트엔드 스쿨 6기<br>JavaScript Mission-01</div>
