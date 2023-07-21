@@ -5,8 +5,7 @@ const characterList = getNode('.nav__list');
 
 const setBgColor = (dataArray) => {
   const body = getNode('body');
-  const color = dataArray.color;
-  const [colorA, colorB = '#000'] = color;
+  const [colorA, colorB = '#000'] = dataArray.color;
 
   body.style.background = `linear-gradient(to bottom, ${colorA}, ${colorB})`;
 };
@@ -20,6 +19,7 @@ const setImage = (dataArray) => {
 
 const setNameText = (dataArray) => {
   const nickName = getNode('.nickName');
+
   nickName.textContent = `${dataArray.name}`;
 };
 

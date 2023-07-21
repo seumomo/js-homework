@@ -40,7 +40,7 @@
   - `setBgColor` 함수
   - `setImage` 함수
   - `setNameText` 함수
-- 가독성이 좋도록 Refactoring한다.
+- 가독성이 좋도록 `Refactoring`한다.
 
 ### 접근 방법
 
@@ -94,7 +94,9 @@
     const index = target.getAttribute('data-index') - 1;
     const dataArray = data[index];
 
-    [...characterList.children].forEach((item) => removeClass(item, 'is-active'));
+    [...characterList.children].forEach((item) =>
+      removeClass(item, 'is-active')
+    );
     addClass(target, 'is-active');
 
     setBgColor(dataArray);
@@ -106,13 +108,13 @@
   > 1. 모든 이미지에 `is-active`라는 `class`가 제거되도록 `forEach`를 사용했다.
   > 2. click`된 `target`의 이미지에 `is-active`라는 `class`가 추가되도록 했다.
   > 3. `chracters`의 정보가 담겨있는 기본 제공된 `data` 배열의 `index`를 `dataArray`라는 변수에 할당했다.
+
   - `character`에 맞는 배경색으로 변경되도록 하는 `setBgColor` 함수를 만들었다.
 
   ```js
   const setBgColor = (dataArray) => {
     const body = getNode('body');
-    const color = dataArray.color;
-    const [colorA, colorB = '#000'] = color;
+    const [colorA, colorB = '#000'] = dataArray.color;
 
     body.style.background = `linear-gradient(to bottom, ${colorA}, ${colorB})`;
   };
@@ -122,6 +124,7 @@
   > ➡️ `colorB`의 기본값은 `#000`으로 설정했다.
 
   - `visual`의 이미지가 선택한 `character`의 이미지와 대체 텍스트가 변경되도록 하는 `setImage` 함수를 만들었다.
+
   ```js
   const setImage = (dataArray) => {
     const visualImage = getNode('.visual img');
@@ -130,21 +133,28 @@
     setAttr(visualImage, 'alt', `./assets/${dataArray.alt}`);
   };
   ```
+
   > `dataArray`를 활용하여 이미지 및 대체 텍스트가 변경되도록 했다.
   > ➡️ `dataArray`의 `name`은 대문자이기 때문에 `toLowerCase()` 메소드를 사용했다.
+
   - 상단의 `name`이 선택한 `character`의 `name`이 되도록 하는 `setNameText` 함수를 만들었다.
+
   ```js
   const setNameText = (dataArray) => {
     const nickName = getNode('.nickName');
+    
     nickName.textContent = `${dataArray.name}`;
   };
   ```
+
   > `dataArray`를 활용하여 상단 이미지의 `name`이 변경되도록 했다.
+
 ### 고민했던 지점
 
 - 화살표 함수를 연습해보기 위해 모든 함수를 화살표 함수로 정의하였다.
 
 - `setBgColor` 함수에서 `colorB`의 기본값을 설정하는 데에 어려움이 있었다.
+
   - `구조 분해 할당`에서 배운 기본값 설정으로 해결했다.
 
 - 함수를 분리는 했는데, 사용하면 `index` 변수에 접근할 수 없다는 `Error`가 출력되었다.
