@@ -106,7 +106,7 @@
   ```
 
   > 1. 모든 이미지에 `is-active`라는 `class`가 제거되도록 `forEach`를 사용했다.
-  > 2. click`된 `target`의 이미지에 `is-active`라는 `class`가 추가되도록 했다.
+  > 2. `click`된 `target`의 이미지에 `is-active`라는 `class`가 추가되도록 했다.
   > 3. `chracters`의 정보가 담겨있는 기본 제공된 `data` 배열의 `index`를 `dataArray`라는 변수에 할당했다.
 
   - `character`에 맞는 배경색으로 변경되도록 하는 `setBgColor` 함수를 만들었다.
@@ -120,8 +120,7 @@
   };
   ```
 
-  > `data` 배열의 `color`들을 `colorA` | `colorB`라는 변수에 구조 분해 할당하였다.
-  > ➡️ `colorB`의 기본값은 `#000`으로 설정했다.
+  > `data` 배열의 `color`들을 `colorA` | `colorB`라는 변수에 구조 분해 할당하였다.<br>➡️ `colorB`의 기본값은 `#000`으로 설정했다.
 
   - `visual`의 이미지가 선택한 `character`의 이미지와 대체 텍스트가 변경되도록 하는 `setImage` 함수를 만들었다.
 
@@ -134,8 +133,7 @@
   };
   ```
 
-  > `dataArray`를 활용하여 이미지 및 대체 텍스트가 변경되도록 했다.
-  > ➡️ `dataArray`의 `name`은 대문자이기 때문에 `toLowerCase()` 메소드를 사용했다.
+  > `dataArray`를 활용하여 이미지 및 대체 텍스트가 변경되도록 했다.<br>➡️ `dataArray`의 `name`은 대문자이기 때문에 `toLowerCase()` 메소드를 사용했다.
 
   - 상단의 `name`이 선택한 `character`의 `name`이 되도록 하는 `setNameText` 함수를 만들었다.
 
