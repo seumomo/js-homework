@@ -4,5 +4,5 @@
 
 ---
 
-### 1. Misson-01 [바로가기](https://github.com/seumomo/js-homework/tree/main/mission01)
-### 2. Misson-02 [바로가기](https://github.com/seumomo/js-homework/tree/main/mission02)
+### 1. Mission-01 [바로가기](https://github.com/seumomo/js-homework/tree/main/mission01)
+### 2. Mission-02 [바로가기](https://github.com/seumomo/js-homework/tree/main/mission02)
